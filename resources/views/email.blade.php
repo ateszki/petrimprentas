@@ -1,0 +1,3 @@
+<h1>Archivos disponibles para orden de compra: {{$orden->numero_de_orden}} hasta: {{$orden->valido_hasta->format('d-m-Y')}}<h1>
+<div>Acceda a los mismos mediante el siguiente link <a href="{{URL::to('orden').'?codigo='.$orden->codigo}}">ARCHIVOS</a></div>
+<div>Si el vinculo anterior no funciona copie esta url y peguela en un navegador: <pre>{{URL::to('orden').'?codigo='.$orden->codigo}}</pre></div>
