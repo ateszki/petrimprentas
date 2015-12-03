@@ -63,6 +63,7 @@ Route::get('/archivo',function(){
                 'psd'=>'image/x-photoshop',
                 'pdf'=>'application/pdf',
                 '.ai'=>'application/illustrator',
+                'zip'=>'application/zip',
                 ); 
     $content = NULL;
     $mime = NULL;
