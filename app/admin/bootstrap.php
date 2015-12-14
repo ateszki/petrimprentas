@@ -39,7 +39,7 @@ Column::register('Link', 'LinkColumn');
 
 FormItem::register('archivosSelector', function (\Eloquent $model)
   		{
- 			$archivos = Storage::files('archivos-imprentas');
+ 			$archivos = Storage::allFiles('archivos-imprentas');
 
  			$archivos_seleccionados = explode(",", $model->archivos);
 
