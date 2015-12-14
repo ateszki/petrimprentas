@@ -50,7 +50,7 @@
                 @if(isset($orden->lista_archivos))
                 <h2>Archivos</h2>
                     @foreach($orden->lista_archivos as $k => $archivo)
-                    <div><a href="{{URL::to('archivo?codigo='.$orden->codigo.'&idx='.$k)}}">{{$archivo}}</a></div>
+                    <div><a href="{{URL::to('archivo?codigo='.$orden->codigo.'&idx='.$k)}}">{{str_replace('archivos-imprentas/','',$archivo)}}</a></div>
                     @endforeach
                 @endif
             </div>

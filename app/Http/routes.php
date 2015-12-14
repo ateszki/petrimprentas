@@ -67,8 +67,8 @@ Route::get('/archivo',function(){
                 ); 
     $content = NULL;
     $mime = NULL;
-    if (Storage::has('archivos-imprentas/'.$archivos[$idx])){
-        $content = Storage::get('archivos-imprentas/'.$archivos[$idx]);
+    if (Storage::has($archivos[$idx])){
+        $content = Storage::get($archivos[$idx]);
         $mime = $mimetype[substr($archivos[$idx],-3)];
     }
 	if($content == NULL){

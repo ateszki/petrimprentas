@@ -4,6 +4,7 @@ namespace App;
 use Crypt;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Models\SleepingOwlModel;
+use Storage;
 
 class Orden extends SleepingOwlModel
 {
@@ -31,6 +32,14 @@ class Orden extends SleepingOwlModel
 	}
 
 	public function getListaArchivosAttribute(){
-		return explode(",",substr($this->archivos,0,strlen($this->archivos)-1));
+		$carpetas = explode(",",substr($this->archivos,0,strlen($this->archivos)-1));
+    $archivos = [];
+    foreach($carpetas as $carpeta){
+      $archivos_carpeta = Storage::files('archivos-imprentas/'.$carpeta);
+      $a = array_merge($archivos,$archivos_carpeta);
+      $archivos = $a;
+    }
+
+    return $archivos;
 	}
 }
