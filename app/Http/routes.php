@@ -79,6 +79,6 @@ Route::get('/archivo',function(){
         abort(404);
     }
 
-    return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'attachment;filename='.$archivos[$carpeta][$idx]);
+    return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'attachment;filename='.basename($archivos[$carpeta][$idx]));
 
 });
