@@ -32,6 +32,16 @@
             .title {
                 font-size: 96px;
             }
+            .carpeta {
+                border:solid 1px black;
+                margin-bottom: 10px;
+                padding: 0 10px 20px;
+                text-align: left;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+                background-color: #e9eaee;
+            }
         </style>
     </head>
     <body>
@@ -49,8 +59,13 @@
 
                 @if(isset($orden->lista_archivos))
                 <h2>Archivos</h2>
-                    @foreach($orden->lista_archivos as $k => $archivo)
-                    <div><a href="{{URL::to('archivo?codigo='.$orden->codigo.'&idx='.$k)}}">{{str_replace('archivos-imprentas/','',$archivo)}}</a></div>
+                    @foreach($orden->lista_archivos as $carpeta => $archivos)
+                        <div class='carpeta'>
+                        <h3>{{ $carpeta }}</h3>
+                        @foreach($archivos as $k => $archivo)
+                        <div><a href="{{URL::to('archivo?codigo='.$orden->codigo.'&idx='.$k.'&carpeta='.$carpeta)}}">{{str_replace('archivos-imprentas/','',$archivo)}}</a></div>
+                        @endforeach
+                        </div>
                     @endforeach
                 @endif
             </div>

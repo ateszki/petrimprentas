@@ -36,8 +36,9 @@ class Orden extends SleepingOwlModel
     $archivos = [];
     foreach($carpetas as $carpeta){
       $archivos_carpeta = Storage::files('archivos-imprentas/'.$carpeta);
-      $a = array_merge($archivos,$archivos_carpeta);
-      $archivos = $a;
+      //$a = array_merge($archivos,$archivos_carpeta);
+      //$archivos = $a;
+      $archivos[$carpeta] = $archivos_carpeta;
     }
 
     return $archivos;

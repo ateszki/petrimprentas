@@ -42,6 +42,10 @@ Route::get('/archivo',function(){
 	if($idx == ''){
 		abort(404);
 	}
+	$carpeta = Input::get('carpeta');
+	if($carpeta == ''){
+		abort(404);
+	}
 
 	try {
 		$vars = Crypt::decrypt($codigo);
@@ -67,14 +71,14 @@ Route::get('/archivo',function(){
                 ); 
     $content = NULL;
     $mime = NULL;
-    if (Storage::has($archivos[$idx])){
-        $content = Storage::get($archivos[$idx]);
-        $mime = $mimetype[substr($archivos[$idx],-3)];
+    if (Storage::has($archivos[$carpeta][$idx])){
+        $content = Storage::get($archivos[$carpeta][$idx]);
+        $mime = $mimetype[substr($archivos[$carpeta][$idx],-3)];
     }
 	if($content == NULL){
         abort(404);
     }
 
-    return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'attachment;filename='.$archivos[$idx]);
+    return response($content)->header('Content-Type', $mime)->header('Content-Disposition', 'attachment;filename='.$archivos[$carpeta][$idx]);
 
 });
